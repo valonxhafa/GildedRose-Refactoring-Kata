@@ -14,7 +14,8 @@ class GildedRoseTest {
             new Item("Normal Item", 10, 20),
             new Item("Aged Brie", 10, 20),
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20),
-            new Item("Sulfuras, Hand of Ragnaros", 0, 80)
+            new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+            new Item("Conjured Mana Cake", 10, 20)
         };
         app = new GildedRose(items);
     }
@@ -69,6 +70,22 @@ class GildedRoseTest {
     }
 
     @Test
+    void conjuredItemsDegradeTwiceAsFast() {
+        assertEquals(20, app.items[4].quality); // Conjured item
+        app.updateQuality();
+
+        // After update, Conjured Mana Cake quality should have decreased by 2
+        assertEquals(18, app.items[4].quality);
+
+        //We sellIn to negative. Now conjured mana cake should drop by an additional 2 (so 4)
+        app.items[4].sellIn = -5;
+        app.updateQuality();
+
+        // After second update, Conjured Mana Cake quality should have decreased by 2 more
+        assertEquals(14, app.items[4].quality);
+    }
+
+    @Test
     void qualityCantExceedMaxQuality() {
         app.items[1].quality = 50;
         app.updateQuality();
@@ -83,7 +100,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void testBackstagePassesQualityResetAfterConcert() {
+    void backstagePassesQualityResetAfterConcert() {
         app.items[2].sellIn = 0;
         assertEquals(20, app.items[2].quality);
 
@@ -94,7 +111,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void testNormalItemQualityDecreasesAfterSellIn() {
+    void normalItemQualityDecreasesAfterSellIn() {
         app.items[0].sellIn = 0;
         assertEquals(20, app.items[0].quality);
 
@@ -104,7 +121,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void ItemQualityCantGoBelowZero() {
+    void itemQualityCantGoBelowZero() {
         Item[] items = new Item[] { new Item("Normal Item", 0, 0) };
         GildedRose app = new GildedRose(items);
 

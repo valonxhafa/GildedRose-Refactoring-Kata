@@ -17,6 +17,8 @@ class GildedRose {
             return new BackStagePassItem(item);
         } else if (isSulfuras(item)) {
             return new SulfurasItem(item);
+        } else if (isConjured(item)) {
+            return new ConjuredItem(item);
         } else {
             return new NormalItem(item);
         }
@@ -45,4 +47,6 @@ class GildedRose {
     private boolean isAgedBrie(Item item) {return "Aged Brie".equals(item.name);}
     private boolean isBackStagePass(Item item) {return "Backstage passes to a TAFKAL80ETC concert".equals(item.name);}
     private boolean isSulfuras(Item item) {return "Sulfuras, Hand of Ragnaros".equals(item.name);}
+    private boolean isConjured(Item item) {return "Conjured Mana Cake".equals(item.name);}
+
 }
