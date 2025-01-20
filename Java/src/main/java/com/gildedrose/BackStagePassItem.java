@@ -9,6 +9,16 @@ public class BackStagePassItem extends AbstractItem {
     @Override
     public void update() {
 
+        if (item.quality < GildedRose.MAX_QUALITY) {
+            increaseQuality();
+            if (item.sellIn < 11) {
+                increaseQuality();
+            }
+            if (item.sellIn < 6) {
+                increaseQuality();
+            }
+        }
+
         item.sellIn--;
     }
 }

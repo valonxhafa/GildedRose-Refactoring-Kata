@@ -9,6 +9,13 @@ public class AgedBrieItem extends AbstractItem  {
     @Override
     public void update() {
 
+        //AgedBrie increases in quality over time!
+        increaseQuality();
         item.sellIn--;
+
+        // Once the sell by date has passed, quality will also increase twice as fast
+        if (item.sellIn < 0) {
+            increaseQuality();
+        }
     }
 }

@@ -31,21 +31,6 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!isNormalItem(item)) { // for isAgedBrie && isBackStagePass
-                if (item.quality < MAX_QUALITY) {
-                    item.quality++;
-
-                    if (isBackStagePass(item)) {
-                        if (item.sellIn < 11) {
-                            increaseQuality(item);
-                        }
-
-                        if (item.sellIn < 6) {
-                            increaseQuality(item);
-                        }
-                    }
-                }
-            }
 
             if (item.sellIn < MIN_QUALITY) {
                 if (!isAgedBrie(item)) {
@@ -59,7 +44,7 @@ class GildedRose {
                         item.quality = MIN_QUALITY;
                     }
                 } else {
-                    increaseQuality(item);
+                    increaseQuality(item); //Done for brie
                 }
             }
             ensureQualityThresholds(item);
