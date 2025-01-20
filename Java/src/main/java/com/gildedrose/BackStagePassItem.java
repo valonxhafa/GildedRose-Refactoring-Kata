@@ -20,5 +20,10 @@ public class BackStagePassItem extends AbstractItem {
         }
 
         item.sellIn--;
+
+        //Quality drops to 0 after the concert
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
     }
 }
