@@ -3,6 +3,8 @@ package com.gildedrose;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -11,7 +13,7 @@ class GildedRoseTest {
     Item[] futureValues = TestData.nextDayValues; //day + 1
 
     @Test
-    void normalItemDecreasesInQualityAndSellIn() {
+    void normalItemsDecreasesInQualityAndSellIn_By_One() {
         Item[] items = new Item[] { new Item("Normal Item", 5, 10) };
         GildedRose app = new GildedRose(items);
 
@@ -22,7 +24,21 @@ class GildedRoseTest {
     }
 
     @Test
-    void compareTodayValuesWithTomorrow() {
+    void ItemQualityCantGoBelowZero() {
+        Item[] items = new Item[] { new Item("Normal Item", 0, 0) };
+        GildedRose app = new GildedRose(items);
+
+        for (int i = 0; i < 3; i++) {
+            app.updateQuality();
+        }
+
+        assertEquals(0, items[0].quality);
+    }
+
+
+
+    @Test
+    void compareAllTodayValuesWithTomorrow() {
         GildedRose app = new GildedRose(currentValues);
 
         app.updateQuality();
