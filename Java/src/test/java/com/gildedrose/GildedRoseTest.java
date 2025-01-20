@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,6 +9,17 @@ class GildedRoseTest {
 
     Item[] currentValues = TestData.currentValues;
     Item[] futureValues = TestData.nextDayValues; //day + 1
+
+    @Test
+    void normalItemDecreasesInQualityAndSellIn() {
+        Item[] items = new Item[] { new Item("Normal Item", 5, 10) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(4, items[0].sellIn);
+        assertEquals(9, items[0].quality);
+    }
 
     @Test
     void compareTodayValuesWithTomorrow() {
