@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.items;
+import com.gildedrose.GildedRose;
+import com.gildedrose.Item;
 
- abstract class AbstractItem {
+public abstract class AbstractItem {
     protected Item item;
 
     public AbstractItem(Item item) {
@@ -19,5 +21,5 @@ package com.gildedrose;
          }
      }
 
-    protected abstract void update();
+    public abstract void update();
 }

@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.items;
+
+import com.gildedrose.Item;
 
 public class NormalItem extends AbstractItem{
 

@@ -37,7 +37,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void AgedBrieIncreasesDoubleInQualityWhenSellInBelowZero() {
+    void agedBrieIncreasesDoubleInQualityWhenSellInBelowZero() {
         Item[] items = new Item[] { new Item("Aged Brie", -1, 10) };
         app = new GildedRose(items);
 
@@ -87,14 +87,14 @@ class GildedRoseTest {
 
     @Test
     void qualityCantExceedMaxQuality() {
-        app.items[1].quality = 50;
+        app.items[1].quality = 51;
         app.updateQuality();
         assertEquals(50, app.items[1].quality);
     }
 
     @Test
     void qualityCantExceedMinimumQuality() {
-        app.items[0].quality = 0;
+        app.items[0].quality = -1;
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
     }

@@ -1,6 +1,8 @@
 package com.gildedrose;
 
-class GildedRose {
+import com.gildedrose.items.*;
+
+public class GildedRose {
     Item[] items;
 
     public final static int MIN_QUALITY = 0;
