@@ -8,5 +8,7 @@ public class AgedBrieItem extends AbstractItem  {
 
     @Override
     public void update() {
+
+        item.sellIn--;
     }
 }

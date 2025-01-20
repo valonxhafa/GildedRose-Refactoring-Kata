@@ -1,10 +1,6 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.stream.IntStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -17,7 +13,7 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("Normal Item", 5, 10) };
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.temp_updateQuality();
 
         assertEquals(4, items[0].sellIn);
         assertEquals(9, items[0].quality);
@@ -34,8 +30,6 @@ class GildedRoseTest {
 
         assertEquals(0, items[0].quality);
     }
-
-
 
     @Test
     void compareAllTodayValuesWithTomorrow() {

@@ -8,5 +8,7 @@ public class BackStagePassItem extends AbstractItem {
 
     @Override
     public void update() {
+
+        item.sellIn--;
     }
 }
