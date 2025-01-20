@@ -3,3 +3,4 @@ cd %TEXTTEST_HOME%
 
 texttestc -con
 
+pause
